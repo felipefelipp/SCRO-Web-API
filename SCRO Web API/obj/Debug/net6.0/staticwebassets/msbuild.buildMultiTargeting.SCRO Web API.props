@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SCRO Web API.props" />
+</Project>
