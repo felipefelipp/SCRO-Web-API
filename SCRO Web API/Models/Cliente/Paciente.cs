@@ -14,53 +14,5 @@ public class Paciente : Pessoa
     public char Sexo { get;  set; }
     public string Profissao { get;  set; }
     public string SenhaClassificacao { get;  set; }
-    //public Paciente(string nome,
-    //                DateTime dtNascimento,
-    //                string cpf,
-    //                string rg,
-    //                string celular,
-    //                string telefone,
-    //                string rua,
-    //                int numero,
-    //                string bairro,
-    //                string municipio,
-    //                string uf,
-    //                int cep,
-    //                char sexo,
-    //                string profissao,
-    //                string email) : base(nome, dtNascimento, cpf, rg, celular, email)
-    //{
-    //    Telefone = telefone;
-    //    Rua = rua;
-    //    Numero = numero;
-    //    Bairro = bairro;
-    //    Municipio = municipio;
-    //    UF = uf;
-    //    CEP = cep;
-    //    Sexo = sexo;
-    //    Profissao = profissao;
-    //}
-
-    //public Paciente(Responsavel responsavel,
-    //                string nome,
-    //                DateTime dtNascimento,
-    //                string cpf,
-    //                string rg,
-    //                string celular,
-    //                string telefone,
-    //                string rua,
-    //                int numero,
-    //                string bairro,
-    //                string municipio,
-    //                string uf,
-    //                int cep,
-    //                char sexo,
-    //                string profissao,
-    //                string email) : this(nome, dtNascimento, cpf, rg, celular, telefone, rua, numero, bairro, municipio, uf, cep, sexo, profissao, email)
-    //{
-    //    Responsavel = responsavel;
-    //}
-
-    //public Paciente() { }
-
+    
 }

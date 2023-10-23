@@ -15,7 +15,8 @@ public class PacienteConfiguration : PessoaConfiguration<Paciente>
 
         builder
             .Property(p => p.PacienteId)
-            .HasColumnName("PacienteId");
+            .HasColumnName("PacienteId")
+            .HasDefaultValueSql("NEXT VALUE FOR PacienteSequence");
 
         builder
             .HasKey(p => p.PacienteId);
