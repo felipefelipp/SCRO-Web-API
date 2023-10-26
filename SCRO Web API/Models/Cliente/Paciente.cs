@@ -13,6 +13,7 @@ public class Paciente : Pessoa
     public int CEP { get;  set; }
     public char Sexo { get;  set; }
     public string Profissao { get;  set; }
-    public string SenhaClassificacao { get;  set; }
+    public string SenhaClassificacao { get; set; }
     
 }
+

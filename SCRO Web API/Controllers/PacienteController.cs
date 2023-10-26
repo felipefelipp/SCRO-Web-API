@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Models.Cliente;
 using Models.Data.Contexto;
 using SCRO_Web_API.Models.Data.Dto.PacienteDto;
+using SCRO_Web_API.Models.Extensions;
 
 namespace SCRO_Web_API.Controllers;
 [ApiController]
@@ -38,10 +39,21 @@ public class PacienteController : Controller
     [HttpPost]
     public IActionResult AdicionaPaciente([FromBody] CreatePacienteDto pacienteDto)
     {
-        Paciente paciente = _mapper.Map<Paciente>(pacienteDto);
-        _context.Pacientes.Add(paciente);
-        _context.SaveChanges();
-        return CreatedAtAction(nameof(RecuperaPacientePorId), new { id = paciente.PacienteId }, paciente);
+         try
+        {
+            Paciente paciente = _mapper.Map<Paciente>(pacienteDto);
+            paciente.SenhaClassificacao = GerarSenha.Sequencia();
+            _context.Pacientes.Add(paciente);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(RecuperaPacientePorId), new { id = paciente.PacienteId }, paciente);
+
+        } catch (DbUpdateException ex) {
+
+            return BadRequest("Não foi possível inserir este paciente nos sistema, verifique se ele já existe: \n" + ex.Message + ": \n"  + ex.InnerException.Message);
+        } catch (Exception ex)
+        {
+            return StatusCode(500, "Erro inesperado: " + ex.Message);
+        }
     }
 
     [HttpPut]
