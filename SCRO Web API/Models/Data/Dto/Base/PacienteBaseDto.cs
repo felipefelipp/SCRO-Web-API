@@ -55,7 +55,7 @@ public abstract class PacienteBaseDto
     public int CEP { get; set; }
 
     [Required(ErrorMessage = "O sexo é obrigatório.")]
-    //[MaxLength(2, ErrorMessage = "Selecione M ou F")]
+    [RegularExpression("^[FM]$", ErrorMessage = "Selecione M ou F")]
     public char Sexo { get; set; }
 
     [Required(ErrorMessage = "A profissão é obrigatório.")]

@@ -11,11 +11,11 @@ namespace SCRO_Web_API.Controllers;
 [Route("[controller]")]
 public class PacienteController : Controller
 {
-     SCROContext _context;
-     IMapper _mapper;
+    SCROContext _context;
+    IMapper _mapper;
     public PacienteController(SCROContext context, IMapper mapper)
     {
-        _context = context; 
+        _context = context;
         _mapper = mapper;
     }
 
@@ -39,7 +39,7 @@ public class PacienteController : Controller
     [HttpPost]
     public IActionResult AdicionaPaciente([FromBody] CreatePacienteDto pacienteDto)
     {
-         try
+        try
         {
             Paciente paciente = _mapper.Map<Paciente>(pacienteDto);
             paciente.SenhaClassificacao = GerarSenha.Sequencia();
@@ -47,10 +47,12 @@ public class PacienteController : Controller
             _context.SaveChanges();
             return CreatedAtAction(nameof(RecuperaPacientePorId), new { id = paciente.PacienteId }, paciente);
 
-        } catch (DbUpdateException ex) {
-
-            return BadRequest("Não foi possível inserir este paciente nos sistema, verifique se ele já existe: \n" + ex.Message + ": \n"  + ex.InnerException.Message);
-        } catch (Exception ex)
+        }
+        catch (DbUpdateException ex)
+        {
+            return BadRequest("Não foi possível inserir este paciente no sistema, verifique se ele já existe: \n" + ex.Message + ": \n" + ex.InnerException.Message);
+        }
+        catch (Exception ex)
         {
             return StatusCode(500, "Erro inesperado: " + ex.Message);
         }
@@ -59,11 +61,22 @@ public class PacienteController : Controller
     [HttpPut]
     public IActionResult AtualizaPaciente(int id, [FromBody] UpdatePacienteDto pacienteDto)
     {
-        var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.PacienteId == id);
-        if (paciente == null) return NotFound();
-        _mapper.Map(pacienteDto, paciente);
-        _context.SaveChanges();
-        return Ok();
+        try
+        {
+            var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.PacienteId == id);
+            if (paciente == null) return NotFound();
+            _mapper.Map(pacienteDto, paciente);
+            _context.SaveChanges();
+            return Ok();
+        }
+        catch (DbUpdateException ex)
+        {
+            return BadRequest("Não foi possível inserir este paciente no sistema: \n" + ex.Message + ": \n" + ex.InnerException.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "Erro inesperado: " + ex.Message);
+        }
     }
 
     [HttpDelete("{id}")]
@@ -76,5 +89,5 @@ public class PacienteController : Controller
         return Ok();
     }
 
-    
+
 }
