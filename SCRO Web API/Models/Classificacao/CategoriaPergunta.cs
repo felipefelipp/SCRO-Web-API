@@ -4,4 +4,5 @@ public class CategoriaPergunta
 {
     public int CategoriaPerguntaId { get; set; }
     public string Descricao { get; set; }
+
 }

@@ -8,7 +8,8 @@ public class PerguntaProfile : Profile
 {
     public PerguntaProfile()
     {
-        CreateMap<Pergunta, ReadPerguntaDto>();
+        CreateMap<Pergunta, ReadPerguntaDto>()
+            .ForMember(dto => dto.CategoriaPergunta, opt => opt.MapFrom(CategoriaPergunta => CategoriaPergunta.CategoriaPergunta));
         CreateMap<CreatePerguntaDto, Pergunta>();
         CreateMap<UpdatePerguntaDto, Pergunta>();
     }

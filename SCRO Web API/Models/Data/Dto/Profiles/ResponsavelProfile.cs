@@ -8,7 +8,8 @@ public class ResponsavelProfile : Profile
 {
     public ResponsavelProfile()
     {
-        CreateMap<Responsavel, ReadResponsavelDto>().ForMember(dto => dto.Paciente, opt => opt.MapFrom(paciente => paciente.Paciente));
+        CreateMap<Responsavel, ReadResponsavelDto>()
+            .ForMember(dto => dto.Paciente, opt => opt.MapFrom(paciente => paciente.Paciente));
         CreateMap<CreateResponsavelDto, Responsavel>();
         CreateMap<UpdateResponsavelDto, Responsavel>();
     }
