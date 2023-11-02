@@ -6,4 +6,5 @@ namespace SCRO_Web_API.Models.Data.Dto.ResponsavelDto;
 public class ReadResponsavelDto : ResponsavelBaseDto
 {
     public int ResponsavelId { get; set; }
+    public ReadPacienteDto Paciente { get; set; }
 }
