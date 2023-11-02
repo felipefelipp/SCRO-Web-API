@@ -2,7 +2,7 @@
 
 namespace SCRO_Web_API.Models.Data.Dto.Base;
 
-public class PerguntaBaseDto
+public class CategoriaPerguntaBaseDto 
 {
-    public string TextoPergunta { get; set; }
+    public string Descricao { get; set; }
 }

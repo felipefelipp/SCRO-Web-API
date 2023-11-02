@@ -22,12 +22,6 @@ public class CategoriaPerguntaConfiguration : IEntityTypeConfiguration<Categoria
             .IsRequired();
 
         builder
-            .HasOne(cp => cp.Pergunta)
-            .WithOne(p => p.Categoria)
-            .HasForeignKey<CategoriaPergunta>(cp => cp.PerguntaId)
-            .IsRequired();
-
-        builder
            .Property<DateTime>("InseridoEm")
            .HasColumnType("datetime")
            .HasDefaultValueSql("getdate()");
