@@ -6,8 +6,8 @@ namespace Models.Classificacao
     public class Resposta
     {
         public int RespostaId { get; set; }
-        public bool  RespostaTexto { get; set; }  //trocar para bool 
-        public bool RespostaTextoArea { get; set; } //trocar para bool
+        public bool RespostaTexto { get; set; }  
+        public bool RespostaTextoArea { get; set; } 
         public string RespostaCheckBox { get; set; }
         public string RespostaComboBox { get; set; }
         public string RespostaRadioButtom { get; set; }
@@ -18,7 +18,7 @@ namespace Models.Classificacao
             get { return ValorTipoResposta.ParaValor(); }
             set { ValorTipoResposta = value.ParaInt(); }
         }
-        public int ValorResposta { get; set; } // Valor da resposta
+        public int ValorResposta { get; set; } // Pontuação da resposta
 
     }
 }

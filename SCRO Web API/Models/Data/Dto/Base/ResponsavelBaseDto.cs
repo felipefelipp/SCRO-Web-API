@@ -2,7 +2,7 @@
 
 namespace SCRO_Web_API.Models.Data.Dto.Base;
 
-public class ResponsavelBaseDto
+public abstract class ResponsavelBaseDto
 {
     [Required(ErrorMessage = "O nome é obrigatório.")]
     [StringLength(250, MinimumLength = 2, ErrorMessage = "O Campo nome deve possuir entre 2 e 250 caracteres.")]
