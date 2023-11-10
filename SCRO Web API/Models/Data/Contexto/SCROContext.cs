@@ -18,7 +18,7 @@ public class SCROContext : DbContext
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Pergunta> Perguntas { get; set; }
     public DbSet<CategoriaPergunta> CategoriaPerguntas { get; set; }
-    public DbSet<PerguntaSelecionadaPaciente> PerguntaSelecionadaPacientes { get; set; }
+    public DbSet<PerguntaSelecionadaPaciente> PerguntaSelecionadaPaciente { get; set; }
     public DbSet<Resposta> Respostas { get; set; }
     public DbSet<RespostaSelecionadaPaciente> RespostaSelecionadaPaciente { get; set; }
     public DbSet<ClassificacaoPaciente> Classificacoes { get; set; }
