@@ -13,7 +13,8 @@ public class RespostaSelecionadaPacienteConfiguration : IEntityTypeConfiguration
 
         builder
             .Property(rspc => rspc.RespostaSelecionadaPacienteId)
-            .HasColumnName("RespostaSelecionadaPacienteId");
+            .HasColumnName("RespostaSelecionadaPacienteId")
+            .HasDefaultValueSql("NEXT VALUE FOR RespostaSelecionadaSequence");
 
         builder
             .Property(rspc => rspc.ValorRespostaTexto)

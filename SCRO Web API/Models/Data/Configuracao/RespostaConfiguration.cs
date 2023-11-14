@@ -13,7 +13,8 @@ public class RespostaConfiguration : IEntityTypeConfiguration<Resposta>
 
         builder
             .Property(r => r.RespostaId)
-            .HasColumnName("RespostaId");
+            .HasColumnName("RespostaId")
+            .HasDefaultValueSql("NEXT VALUE FOR RespostaSequence");
 
         builder
             .Property(r => r.RespostaTexto)

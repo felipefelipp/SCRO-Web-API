@@ -13,7 +13,8 @@ public class PerguntaConfiguration : IEntityTypeConfiguration<Pergunta>
 
         builder
             .Property(p => p.PerguntaId)
-            .HasColumnName("PerguntaId");
+            .HasColumnName("PerguntaId")
+            .HasDefaultValueSql("NEXT VALUE FOR PerguntaSequence");
 
         builder
             .Property(p => p.TextoPergunta)

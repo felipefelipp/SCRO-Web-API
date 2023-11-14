@@ -14,7 +14,8 @@ public class UsuarioConfiguration : PessoaConfiguration<Usuario>
 
         builder
             .Property(u => u.UsuarioId)
-            .HasColumnName("UsuarioId");
+            .HasColumnName("UsuarioId")
+            .HasDefaultValueSql("NEXT VALUE FOR UsuarioSequence");
 
         base.Configure(builder);
 

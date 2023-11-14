@@ -13,7 +13,8 @@ public class PerguntaSelecionadaPacienteConfiguration : IEntityTypeConfiguration
 
         builder
             .Property(pspc => pspc.PerguntaSelecionadaPacienteId)
-            .HasColumnName("PerguntaSelecionadaPacienteId");
+            .HasColumnName("PerguntaSelecionadaPacienteId")
+            .HasDefaultValueSql("NEXT VALUE FOR PerguntaSelecionadaPacienteSequence");
 
         builder
             .Property(pspc => pspc.PerguntaId)

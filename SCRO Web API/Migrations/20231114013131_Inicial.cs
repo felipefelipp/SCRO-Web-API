@@ -6,21 +6,33 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SCRO_Web_API.Migrations
 {
     /// <inheritdoc />
-    public partial class inicial : Migration
+    public partial class Inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "CategoriaPergunta",
+                columns: table => new
+                {
+                    CategoriaPerguntaId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR CategoriaPerguntaSequence"),
+                    Descricao = table.Column<string>(type: "varchar(100)", nullable: false),
+                    InseridoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
+                    InseridoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1"),
+                    ModificadoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
+                    ModificadoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoriaPergunta", x => x.CategoriaPerguntaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ClassificacaoPaciente",
                 columns: table => new
                 {
-                    ClassificacaoPacienteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClassificacaoPacienteId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR ClassificacaoPacienteSequence"),
                     PacienteId = table.Column<int>(type: "int", nullable: false),
-                    ValorResultadoClassificacao = table.Column<int>(type: "int", nullable: false),
-                    ValorResultadoCor = table.Column<int>(type: "int", nullable: false),
-                    ResultadoClassificacaoCor = table.Column<int>(type: "int", nullable: false),
                     InseridoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
                     InseridoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1"),
                     ModificadoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
@@ -35,8 +47,7 @@ namespace SCRO_Web_API.Migrations
                 name: "Paciente",
                 columns: table => new
                 {
-                    PacienteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PacienteId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR PacienteSequence"),
                     telefone = table.Column<string>(type: "varchar(11)", nullable: false),
                     rua = table.Column<string>(type: "varchar(100)", nullable: false),
                     numero = table.Column<int>(type: "int", nullable: false),
@@ -64,28 +75,10 @@ namespace SCRO_Web_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pergunta",
-                columns: table => new
-                {
-                    PerguntaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DescricaoPergunta = table.Column<string>(type: "varchar(250)", nullable: false),
-                    InseridoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    InseridoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1"),
-                    ModificadoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    ModificadoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pergunta", x => x.PerguntaId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PerguntaSelecionadaPaciente",
                 columns: table => new
                 {
-                    PerguntaSelecionadaPacienteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PerguntaSelecionadaPacienteId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR PerguntaSelecionadaPacienteSequence"),
                     PerguntaId = table.Column<int>(type: "int", nullable: false),
                     PacienteId = table.Column<int>(type: "int", nullable: false),
                     ClassificacaoPacienteId = table.Column<int>(type: "int", nullable: false),
@@ -103,8 +96,7 @@ namespace SCRO_Web_API.Migrations
                 name: "Resposta",
                 columns: table => new
                 {
-                    RespostaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RespostaId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR RespostaSequence"),
                     RespostaTexto = table.Column<bool>(type: "bit", nullable: false),
                     RespostaTextoArea = table.Column<bool>(type: "bit", nullable: false),
                     RespostaCheckBox = table.Column<string>(type: "varchar(100)", nullable: false),
@@ -127,8 +119,7 @@ namespace SCRO_Web_API.Migrations
                 name: "RespostaSelecionadaPaciente",
                 columns: table => new
                 {
-                    RespostaSelecionadaPacienteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RespostaSelecionadaPacienteId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR RespostaSelecionadaSequence"),
                     RespostaId = table.Column<int>(type: "int", nullable: false),
                     ValorRespostaTexto = table.Column<string>(type: "varchar(100)", nullable: true),
                     ValorRespostaTextoArea = table.Column<string>(type: "varchar(max)", nullable: true),
@@ -148,8 +139,7 @@ namespace SCRO_Web_API.Migrations
                 name: "Usuario",
                 columns: table => new
                 {
-                    UsuarioId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR UsuarioSequence"),
                     coren = table.Column<string>(type: "varchar(8)", nullable: false),
                     crm = table.Column<string>(type: "varchar(8)", nullable: false),
                     senha = table.Column<string>(type: "varchar(8)", nullable: false),
@@ -170,11 +160,32 @@ namespace SCRO_Web_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pergunta",
+                columns: table => new
+                {
+                    PerguntaId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR PerguntaSequence"),
+                    DescricaoPergunta = table.Column<string>(type: "varchar(250)", nullable: false),
+                    CategoriaPerguntaId = table.Column<int>(type: "int", nullable: true),
+                    InseridoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
+                    InseridoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1"),
+                    ModificadoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
+                    ModificadoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pergunta", x => x.PerguntaId);
+                    table.ForeignKey(
+                        name: "FK_Pergunta_CategoriaPergunta_CategoriaPerguntaId",
+                        column: x => x.CategoriaPerguntaId,
+                        principalTable: "CategoriaPergunta",
+                        principalColumn: "CategoriaPerguntaId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Responsavel",
                 columns: table => new
                 {
-                    ResponsavelId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ResponsavelId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR ResponsavelSequence"),
                     PacienteId = table.Column<int>(type: "int", nullable: true),
                     InseridoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
                     InseridoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1"),
@@ -197,36 +208,6 @@ namespace SCRO_Web_API.Migrations
                         principalColumn: "PacienteId");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "CategoriaPergunta",
-                columns: table => new
-                {
-                    CategoriaPerguntaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PerguntaId = table.Column<int>(type: "int", nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(100)", nullable: false),
-                    InseridoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    InseridoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1"),
-                    ModificadoEm = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    ModificadoPor = table.Column<int>(type: "int", nullable: false, defaultValueSql: "1")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CategoriaPergunta", x => x.CategoriaPerguntaId);
-                    table.ForeignKey(
-                        name: "FK_CategoriaPergunta_Pergunta_PerguntaId",
-                        column: x => x.PerguntaId,
-                        principalTable: "Pergunta",
-                        principalColumn: "PerguntaId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CategoriaPergunta_PerguntaId",
-                table: "CategoriaPergunta",
-                column: "PerguntaId",
-                unique: true);
-
             migrationBuilder.CreateIndex(
                 name: "IX_Paciente_celular",
                 table: "Paciente",
@@ -238,6 +219,11 @@ namespace SCRO_Web_API.Migrations
                 table: "Paciente",
                 column: "cpf",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pergunta_CategoriaPerguntaId",
+                table: "Pergunta",
+                column: "CategoriaPerguntaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Responsavel_celular",
@@ -275,10 +261,10 @@ namespace SCRO_Web_API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoriaPergunta");
+                name: "ClassificacaoPaciente");
 
             migrationBuilder.DropTable(
-                name: "ClassificacaoPaciente");
+                name: "Pergunta");
 
             migrationBuilder.DropTable(
                 name: "PerguntaSelecionadaPaciente");
@@ -296,7 +282,7 @@ namespace SCRO_Web_API.Migrations
                 name: "Usuario");
 
             migrationBuilder.DropTable(
-                name: "Pergunta");
+                name: "CategoriaPergunta");
 
             migrationBuilder.DropTable(
                 name: "Paciente");

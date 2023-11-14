@@ -13,7 +13,8 @@ public class CategoriaPerguntaConfiguration : IEntityTypeConfiguration<Categoria
 
         builder
             .Property(cp => cp.CategoriaPerguntaId)
-            .HasColumnName("CategoriaPerguntaId");
+            .HasColumnName("CategoriaPerguntaId")
+            .HasDefaultValueSql("NEXT VALUE FOR CategoriaPerguntaSequence"); 
 
         builder
             .Property(cp => cp.Descricao)

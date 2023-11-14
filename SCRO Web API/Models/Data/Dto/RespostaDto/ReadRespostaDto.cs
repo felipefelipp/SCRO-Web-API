@@ -11,4 +11,5 @@ public class ReadRespostaDto : RespostaBaseDto
     {
         get { return ValorTipoResposta.ParaValor().ToString(); }
     }
+
 }

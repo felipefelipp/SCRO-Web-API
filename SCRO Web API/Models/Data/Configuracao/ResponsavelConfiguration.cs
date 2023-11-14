@@ -15,7 +15,8 @@ public class ResponsavelConfiguration : PessoaConfiguration<Responsavel>
 
         builder
             .Property(r => r.ResponsavelId)
-            .HasColumnName("ResponsavelId");
+            .HasColumnName("ResponsavelId")
+            .HasDefaultValueSql("NEXT VALUE FOR ResponsavelSequence");
 
         builder
             .HasKey(r => r.ResponsavelId);  

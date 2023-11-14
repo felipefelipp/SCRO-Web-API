@@ -12,8 +12,8 @@ using Models.Data.Contexto;
 namespace SCRO_Web_API.Migrations
 {
     [DbContext(typeof(SCROContext))]
-    [Migration("20231102005941_Ajuste categoriaPergunta")]
-    partial class AjustecategoriaPergunta
+    [Migration("20231114013131_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,9 +33,8 @@ namespace SCRO_Web_API.Migrations
                     b.Property<int>("CategoriaPerguntaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("CategoriaPerguntaId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoriaPerguntaId"));
+                        .HasColumnName("CategoriaPerguntaId")
+                        .HasDefaultValueSql("NEXT VALUE FOR CategoriaPerguntaSequence");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -72,9 +71,8 @@ namespace SCRO_Web_API.Migrations
                     b.Property<int>("ClassificacaoPacienteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("ClassificacaoPacienteId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClassificacaoPacienteId"));
+                        .HasColumnName("ClassificacaoPacienteId")
+                        .HasDefaultValueSql("NEXT VALUE FOR ClassificacaoPacienteSequence");
 
                     b.Property<DateTime>("InseridoEm")
                         .ValueGeneratedOnAdd()
@@ -97,18 +95,8 @@ namespace SCRO_Web_API.Migrations
                         .HasDefaultValueSql("1");
 
                     b.Property<int>("PacienteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ResultadoClassificacaoCor")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ResultadoCor")
                         .HasColumnType("int")
-                        .HasColumnName("ValorResultadoCor");
-
-                    b.Property<int>("ValorResultadoClassificacao")
-                        .HasColumnType("int")
-                        .HasColumnName("ValorResultadoClassificacao");
+                        .HasColumnName("PacienteId");
 
                     b.HasKey("ClassificacaoPacienteId");
 
@@ -120,11 +108,10 @@ namespace SCRO_Web_API.Migrations
                     b.Property<int>("PerguntaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("PerguntaId");
+                        .HasColumnName("PerguntaId")
+                        .HasDefaultValueSql("NEXT VALUE FOR PerguntaSequence");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PerguntaId"));
-
-                    b.Property<int>("CategoriaId")
+                    b.Property<int?>("CategoriaPerguntaId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("InseridoEm")
@@ -154,6 +141,8 @@ namespace SCRO_Web_API.Migrations
 
                     b.HasKey("PerguntaId");
 
+                    b.HasIndex("CategoriaPerguntaId");
+
                     b.ToTable("Pergunta", (string)null);
                 });
 
@@ -162,9 +151,8 @@ namespace SCRO_Web_API.Migrations
                     b.Property<int>("PerguntaSelecionadaPacienteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("PerguntaSelecionadaPacienteId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PerguntaSelecionadaPacienteId"));
+                        .HasColumnName("PerguntaSelecionadaPacienteId")
+                        .HasDefaultValueSql("NEXT VALUE FOR PerguntaSelecionadaPacienteSequence");
 
                     b.Property<int>("ClassificacaoPacienteId")
                         .HasColumnType("int")
@@ -207,9 +195,8 @@ namespace SCRO_Web_API.Migrations
                     b.Property<int>("RespostaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("RespostaId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RespostaId"));
+                        .HasColumnName("RespostaId")
+                        .HasDefaultValueSql("NEXT VALUE FOR RespostaSequence");
 
                     b.Property<DateTime>("InseridoEm")
                         .ValueGeneratedOnAdd()
@@ -276,9 +263,8 @@ namespace SCRO_Web_API.Migrations
                     b.Property<int>("RespostaSelecionadaPacienteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("RespostaSelecionadaPacienteId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RespostaSelecionadaPacienteId"));
+                        .HasColumnName("RespostaSelecionadaPacienteId")
+                        .HasDefaultValueSql("NEXT VALUE FOR RespostaSelecionadaSequence");
 
                     b.Property<int>("ClassificacaoPacienteId")
                         .HasColumnType("int")
@@ -443,9 +429,8 @@ namespace SCRO_Web_API.Migrations
                     b.Property<int>("ResponsavelId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("ResponsavelId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ResponsavelId"));
+                        .HasColumnName("ResponsavelId")
+                        .HasDefaultValueSql("NEXT VALUE FOR ResponsavelSequence");
 
                     b.Property<string>("CPF")
                         .IsRequired()
@@ -519,9 +504,8 @@ namespace SCRO_Web_API.Migrations
                     b.Property<int>("UsuarioId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("UsuarioId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"));
+                        .HasColumnName("UsuarioId")
+                        .HasDefaultValueSql("NEXT VALUE FOR UsuarioSequence");
 
                     b.Property<string>("COREN")
                         .IsRequired()
@@ -596,6 +580,15 @@ namespace SCRO_Web_API.Migrations
                         .IsUnique();
 
                     b.ToTable("Usuario", (string)null);
+                });
+
+            modelBuilder.Entity("Models.Classificacao.Pergunta", b =>
+                {
+                    b.HasOne("Models.Classificacao.CategoriaPergunta", "CategoriaPergunta")
+                        .WithMany()
+                        .HasForeignKey("CategoriaPerguntaId");
+
+                    b.Navigation("CategoriaPergunta");
                 });
 
             modelBuilder.Entity("Models.Cliente.Responsavel", b =>

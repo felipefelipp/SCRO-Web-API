@@ -3,5 +3,5 @@
 public class ClassificacaoPacienteBaseDto
 {
     public int PacienteId { get; set; }
-    public int ValorResultadoClassificacao { get; set; }
+    public int ClassificacaoPacienteId { get; set; }
 }

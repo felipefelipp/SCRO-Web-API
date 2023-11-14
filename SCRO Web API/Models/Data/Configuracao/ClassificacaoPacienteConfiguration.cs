@@ -13,16 +13,13 @@ namespace Models.Data.Configuracao
 
             builder
                 .Property(cpc => cpc.ClassificacaoPacienteId)
-                .HasColumnName("ClassificacaoPacienteId");
+                .HasColumnName("ClassificacaoPacienteId")
+                .HasDefaultValueSql("NEXT VALUE FOR ClassificacaoPacienteSequence");
 
             builder
-                .Property(cpc => cpc.ValorResultadoClassificacao)
-                .HasColumnName("ValorResultadoClassificacao");
-
-            builder
-                .Property(cpc => cpc.ResultadoCor)
-                .HasColumnName("ValorResultadoCor");
-
+                .Property(cpc => cpc.PacienteId)
+                .HasColumnName("PacienteId");
+            
             builder
                .Property<DateTime>("InseridoEm")
                .HasColumnType("datetime")
