@@ -1,9 +1,8 @@
-﻿using Models.Enums;
-using Models.Extensions;
+﻿using Models.Extensions;
 
-namespace SCRO_Web_API.Models.Classificacao;
+namespace SCRO_Web_API.Models.Data.Dto.Base;
 
-public class Resultado
+public abstract class ResultadoBaseDto
 {
     public int ResultadoId { get; set; }
     public int PacienteId { get; set; }
@@ -14,6 +13,4 @@ public class Resultado
     {
         get { return ResultadoCor.ParaValorClassificacao().ToString(); }
     }
-
 }
-

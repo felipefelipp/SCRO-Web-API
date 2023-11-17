@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Models.Classificacao;
 using Models.Data.Contexto;
-using SCRO_Web_API.Models.Data.Dto.CategoriaPerguntaDto;
 using SCRO_Web_API.Models.Data.Dto.ClassificacaoPacienteDto;
 using System.Collections;
 

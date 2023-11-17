@@ -23,7 +23,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FilmesAPI", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SCROWEBAPI", Version = "v1" });
 });
 
 var app = builder.Build();

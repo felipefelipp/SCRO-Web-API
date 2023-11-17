@@ -9,4 +9,5 @@ public class PerguntaSelecionadaPaciente
     public int PacienteId { get; set; }
     public int ClassificacaoPacienteId { get; set; }
 
+
 }

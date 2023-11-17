@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Models.Data.Contexto;
 
@@ -11,9 +12,11 @@ using Models.Data.Contexto;
 namespace SCRO_Web_API.Migrations
 {
     [DbContext(typeof(SCROContext))]
-    partial class SCROContextModelSnapshot : ModelSnapshot
+    [Migration("20231114110915_Add pergunta id em RespostaSelecionadaPaciente")]
+    partial class AddperguntaidemRespostaSelecionadaPaciente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -580,50 +583,6 @@ namespace SCRO_Web_API.Migrations
                         .IsUnique();
 
                     b.ToTable("Usuario", (string)null);
-                });
-
-            modelBuilder.Entity("SCRO_Web_API.Models.Classificacao.Resultado", b =>
-                {
-                    b.Property<int>("ResultadoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValueSql("NEXT VALUE FOR ResultadoSequence");
-
-                    b.Property<int>("ClassificacaoPacienteId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("InseridoEm")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("getdate()");
-
-                    b.Property<int>("InseridoPor")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValueSql("1");
-
-                    b.Property<DateTime>("ModificadoEm")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("getdate()");
-
-                    b.Property<int>("ModificadoPor")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValueSql("1");
-
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ResultadoCor")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ValorResultadoClassificacao")
-                        .HasColumnType("int");
-
-                    b.HasKey("ResultadoId");
-
-                    b.ToTable("Resultado", (string)null);
                 });
 
             modelBuilder.Entity("Models.Classificacao.Pergunta", b =>
