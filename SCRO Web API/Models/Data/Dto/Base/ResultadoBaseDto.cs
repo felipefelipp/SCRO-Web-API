@@ -9,8 +9,6 @@ public abstract class ResultadoBaseDto
     public int ClassificacaoPacienteId { get; set; }
     public int ValorResultadoClassificacao { get; set; }
     public int ResultadoCor { get; set; }
-    public string ResultadoClassificacaoCor
-    {
-        get { return ResultadoCor.ParaValorClassificacao().ToString(); }
-    }
+    public string ResultadoClassificacaoCor { get; set; }
+
 }

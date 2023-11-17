@@ -4,22 +4,39 @@ namespace Models.Extensions;
 
 public static class ResultadoClassificacaoCorExtensions
 {
-     static Dictionary<int, ResultadoClassificacaoCor> Mapa = new Dictionary<int, ResultadoClassificacaoCor>() 
+    private static readonly List<(int valor, ResultadoClassificacaoCor cor)> Mapa = new List<(int, ResultadoClassificacaoCor)>() 
     {
-        { 1, ResultadoClassificacaoCor.vermelho },
-        { 2, ResultadoClassificacaoCor.laranja },
-        { 3, ResultadoClassificacaoCor.amarelo },
-        { 4, ResultadoClassificacaoCor.verde },
-        { 5, ResultadoClassificacaoCor.azul }
+        ( 40, ResultadoClassificacaoCor.vermelho ),
+        ( 30, ResultadoClassificacaoCor.laranja ),
+        ( 20, ResultadoClassificacaoCor.amarelo ),
+        ( 10, ResultadoClassificacaoCor.verde ),
+        ( 0, ResultadoClassificacaoCor.azul )
     };
 
-    public static int ParaIntClassificacao(this ResultadoClassificacaoCor valor) 
+    public static ResultadoClassificacaoCor ParaValorResultado(this int valor) 
     {
-        return Mapa.First(r => r.Value == valor).Key;
+        foreach(var (limite, cor) in Mapa.OrderByDescending(x => x.valor))
+        {
+            if (valor >= limite)
+            {
+                return cor;
+            }
+        }
+
+        throw new ArgumentOutOfRangeException(nameof(valor), "O valor fornecido está fora do intervalo permitido.");
     }
 
-    public static ResultadoClassificacaoCor ParaValorClassificacao(this int valor) 
+    public static int ParaValorInt(this int valor)
     {
-        return Mapa.First(r => r.Key == valor).Value;
+        foreach (var (limite, cor) in Mapa.OrderByDescending(x => x.valor))
+        {
+            if (valor >= limite)
+            {
+                return limite;
+            }
+        }
+
+        throw new ArgumentOutOfRangeException(nameof(valor), "O valor fornecido está fora do intervalo permitido.");
     }
+
 }

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Models.Classificacao;
 using Models.Data.Contexto;
+using Models.Extensions;
 using SCRO_Web_API.Models.Classificacao;
 using SCRO_Web_API.Models.Data.Dto.ResultadoDto;
 using System.Collections;
@@ -31,7 +33,7 @@ public class ResultadoController : Controller
     }
 
     [HttpGet]
-    public IEnumerable RecuperaResultados([FromQuery] int skip, [FromQuery] int take)
+    public IEnumerable RecuperaResultados([FromQuery] int skip = 0, [FromQuery] int take = 5)
     {
         var resultados = _context.Resultados.Skip(skip).Take(take).ToList();
         var resultadosDto = _mapper.Map<List<ReadResultadoDto>>(resultados);
@@ -41,36 +43,45 @@ public class ResultadoController : Controller
     [HttpPost]
     public IActionResult ObterResultado(int ClassificacaoId)
     {
-
-        var resultado = (from cp in _context.Classificacoes
-                         join rsp in _context.RespostaSelecionadaPaciente on cp.ClassificacaoPacienteId equals rsp.ClassificacaoPacienteId
-                         join r in _context.Respostas on rsp.RespostaId equals r.RespostaId
-                         where cp.ClassificacaoPacienteId == ClassificacaoId
-                         group r.ValorResposta by new { cp.ClassificacaoPacienteId, cp.PacienteId } into grupo
-                         select new
-                         {
-                             ValorResposta = grupo.Sum(),
-                             ClassificacaoPacienteId = grupo.Key.ClassificacaoPacienteId,
-                             PacienteId = grupo.Key.PacienteId,
-                             ResultadoCor = 0
-                         }).FirstOrDefault();
-
-
-
-        if (resultado.ClassificacaoPacienteId < 0)
+        try
         {
-            return NotFound("Classificação não encontrada, tente novamente. ");
+            var resultado = (from cp in _context.Classificacoes
+                             join rsp in _context.RespostaSelecionadaPaciente on cp.ClassificacaoPacienteId equals rsp.ClassificacaoPacienteId
+                             join r in _context.Respostas on rsp.RespostaId equals r.RespostaId
+                             where cp.ClassificacaoPacienteId == ClassificacaoId
+                             group r.ValorResposta by new { cp.ClassificacaoPacienteId, cp.PacienteId } into grupo
+                             select new
+                             {
+                                 ValorResposta = grupo.Sum(),
+                                 ClassificacaoPacienteId = grupo.Key.ClassificacaoPacienteId,
+                                 PacienteId = grupo.Key.PacienteId
+                             }).FirstOrDefault();
+
+
+
+            if (resultado.ClassificacaoPacienteId < 0)
+            {
+                return NotFound("Classificação não encontrada, tente novamente. ");
+            }
+
+            Resultado resultadoClassificacao = new Resultado
+            {
+                ClassificacaoPacienteId = resultado.ClassificacaoPacienteId,
+                PacienteId = resultado.PacienteId,
+                ValorResultadoClassificacao = resultado.ValorResposta,
+                ResultadoCor = resultado.ValorResposta.ParaValorInt(),
+                ResultadoClassificacaoCor = resultado.ValorResposta.ParaValorResultado().ToString()
+            };
+
+            _context.Resultados.Add(resultadoClassificacao);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(RecuperaResultadoId), new { id = resultadoClassificacao.ResultadoId }, resultadoClassificacao);
+        } catch (DbUpdateException ex)
+        {
+            return BadRequest("Resultado já existe para esta classificação: \n" + ex.Message + ": \n" + ex.InnerException.Message);
+        } catch (Exception ex) 
+        {
+            return StatusCode(500, "Erro inesperado: " + ex.Message);
         }
-
-        Resultado resultadoClassificacao = new Resultado
-        {
-            ClassificacaoPacienteId = resultado.ClassificacaoPacienteId,
-            PacienteId = resultado.PacienteId,
-            ValorResultadoClassificacao = resultado.ValorResposta,
-            ResultadoCor = resultado.ResultadoCor
-        };
-
-        _context.Resultados.Add(resultadoClassificacao);
-        return CreatedAtAction(nameof(RecuperaResultadoId), new { id = resultadoClassificacao.ResultadoId }, resultadoClassificacao);
     }
 }

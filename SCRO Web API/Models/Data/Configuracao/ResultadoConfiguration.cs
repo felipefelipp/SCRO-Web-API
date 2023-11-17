@@ -13,6 +13,10 @@ public class ResultadoConfiguration : IEntityTypeConfiguration<Resultado>
         builder.Property(r => r.ResultadoId)
                .HasDefaultValueSql("NEXT VALUE FOR ResultadoSequence");
 
+        builder.Property(r => r.ResultadoClassificacaoCor)
+               .HasColumnName("ResultadoClassificacaoCor")
+               .HasColumnType("varchar(100)");
+
         builder
            .Property<DateTime>("InseridoEm")
            .HasColumnType("datetime")
