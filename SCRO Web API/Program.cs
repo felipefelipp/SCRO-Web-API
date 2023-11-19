@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Models.Data.Contexto;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 var conectionString = builder.Configuration.GetConnectionString("SCROConection");
@@ -21,9 +23,30 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //builder.Services.AddEndpointsApiExplorer();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddSwaggerGen(c =>
+builder.Services.AddSwaggerGen(opcoes =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SCROWEBAPI", Version = "v1" });
+
+    opcoes.SwaggerDoc("v1", new OpenApiInfo 
+    { 
+        Version = "v1",
+        Title = "SCROWEBAPI",
+        Description = "API destinada ao sistema de classificação de risco para gestantes e puérperas",
+        TermsOfService = new Uri("https://example.com/terms"),
+        Contact = new OpenApiContact
+        {
+            Name = "Felipe Santos",
+            Url = new Uri("https://example.com/contact")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "Example License",
+            Url = new Uri("https://example.com/license")
+        }
+    });
+
+    // using System.Reflection;
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    opcoes.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
 var app = builder.Build();

@@ -93,3 +93,5 @@ C:\Users\felip\OneDrive\Área de Trabalho\Dev\TCC\SCRO Web API\SCRO Web API\bin\
 C:\Users\felip\OneDrive\Área de Trabalho\Dev\TCC\SCRO Web API\SCRO Web API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\felip\OneDrive\Área de Trabalho\Dev\TCC\SCRO Web API\SCRO Web API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\felip\OneDrive\Área de Trabalho\Dev\TCC\SCRO Web API\SCRO Web API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\felip\OneDrive\Área de Trabalho\Dev\TCC\SCRO Web API\SCRO Web API\bin\Debug\net6.0\SCRO Web API.xml
+C:\Users\felip\OneDrive\Área de Trabalho\Dev\TCC\SCRO Web API\SCRO Web API\obj\Debug\net6.0\SCRO Web API.xml

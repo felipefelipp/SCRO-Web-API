@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SCRO Web API</name>
+    </assembly>
+    <members>
+        <member name="M:SCRO_Web_API.Controllers.PacienteController.RecuperaPacientePorId(System.Int32)">
+            <summary>
+            Obtém um paciente pelo ID.
+            </summary>
+            <param name="id">ID do paciente.</param>
+            <returns>O paciente correspondente ao ID.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.PacienteController.RecuperarPacientes(System.Int32,System.Int32)">
+            <summary>
+            Obtém uma lista de pacientes.
+            </summary>
+            <param name="skip">Número de registros a serem ignorados.</param>
+            <param name="take">Número máximo de registros a serem retornados.</param>
+            <returns>Uma lista de pacientes.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.PacienteController.AdicionarPaciente(SCRO_Web_API.Models.Data.Dto.PacienteDto.CreatePacienteDto)">
+            <summary>
+            Adiciona um novo paciente.
+            </summary>
+            <param name="pacienteDto">Dados do paciente a serem adicionados.</param>
+            <returns>O paciente recém-adicionado.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.PacienteController.AtualizarPaciente(System.Int32,SCRO_Web_API.Models.Data.Dto.PacienteDto.UpdatePacienteDto)">
+            <summary>
+            Atualiza os dados de um paciente existente.
+            </summary>
+            <param name="id">ID do paciente a ser atualizado.</param>
+            <param name="pacienteDto">Dados do paciente para atualização.</param>
+            <returns>Código de status OK se a atualização for bem-sucedida.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.PacienteController.DeletaPaciente(System.Int32)">
+            <summary>
+            Deleta um paciente existente.
+            </summary>
+            <param name="id">ID do paciente a ser deletado.</param>
+            <returns>Código de status OK se a exclusão for bem-sucedida.</returns>
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.Inicial">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Inicial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Inicial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Inicial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.AddperguntaidemRespostaSelecionadaPaciente">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddperguntaidemRespostaSelecionadaPaciente.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddperguntaidemRespostaSelecionadaPaciente.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddperguntaidemRespostaSelecionadaPaciente.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.Resultado">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Resultado.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Resultado.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Resultado.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.AddResultadoClassificacaoCor">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddResultadoClassificacaoCor.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddResultadoClassificacaoCor.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddResultadoClassificacaoCor.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.Resultadounico">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Resultadounico.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Resultadounico.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Resultadounico.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

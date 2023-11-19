@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Models.Classificacao;
 using Models.Data.Contexto;
 using Models.Extensions;
 using SCRO_Web_API.Models.Classificacao;
 using SCRO_Web_API.Models.Data.Dto.ResultadoDto;
 using System.Collections;
-using System.Linq;
 
 
 namespace SCRO_Web_API.Controllers;
