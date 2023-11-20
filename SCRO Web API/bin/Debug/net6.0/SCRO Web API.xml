@@ -101,5 +101,17 @@
         <member name="M:SCRO_Web_API.Migrations.Resultadounico.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:SCRO_Web_API.Migrations.Removersenhadaclassepaciente">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Removersenhadaclassepaciente.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Removersenhadaclassepaciente.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Removersenhadaclassepaciente.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

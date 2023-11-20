@@ -70,7 +70,7 @@ public class PacienteController : Controller
         try
         {
             Paciente paciente = _mapper.Map<Paciente>(pacienteDto);
-            paciente.SenhaClassificacao = GerarSenha.Sequencia();
+            //paciente.SenhaClassificacao = GerarSenha.Sequencia();
             _context.Pacientes.Add(paciente);
             _context.SaveChanges();
             return CreatedAtAction(nameof(RecuperaPacientePorId), new { id = paciente.PacienteId }, paciente);
