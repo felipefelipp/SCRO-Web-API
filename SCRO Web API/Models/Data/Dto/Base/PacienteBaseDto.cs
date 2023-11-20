@@ -5,7 +5,6 @@ namespace SCRO_Web_API.Models.Data.Dto.Base;
 public abstract class PacienteBaseDto
 {
     [Required(ErrorMessage = "O nome é obrigatório.")]
-    //[RegularExpression("")]
     [StringLength(250, MinimumLength = 2, ErrorMessage = "O Campo nome deve possuir entre 2 e 250 caracteres.")]
     public string Nome { get; set; }
 
@@ -61,5 +60,4 @@ public abstract class PacienteBaseDto
     [Required(ErrorMessage = "A profissão é obrigatório.")]
     [MaxLength(250, ErrorMessage = "Não pode ser maior que 250 caracteres")]
     public string Profissao { get; set; }
-   
 }

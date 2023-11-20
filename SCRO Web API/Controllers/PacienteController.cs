@@ -27,9 +27,9 @@ public class PacienteController : Controller
     [HttpGet("/Paciente/RecuperaPacientePorId/{id}")]
     [ProducesResponseType(200, Type = typeof(ReadPacienteDto))]
     [ProducesResponseType(404)]
-    public IActionResult RecuperaPacientePorId(int id)
+    public async Task<IActionResult> RecuperaPacientePorId(int id)
     {
-        var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.PacienteId == id);
+        var paciente = await _context.Pacientes.FirstOrDefaultAsync(paciente => paciente.PacienteId == id);
         if (paciente == null) return NotFound($"Paciente com ID {id} não encontrado.");
         var pacienteDto = _mapper.Map<ReadPacienteDto>(paciente);
         return Ok(pacienteDto);
@@ -44,9 +44,9 @@ public class PacienteController : Controller
     /// <returns>Uma lista de pacientes.</returns>
     [HttpGet("/Paciente/RecuperarPacientes")]
     [ProducesResponseType(200, Type = typeof(IEnumerable<ReadPacienteDto>))]
-    public IEnumerable<ReadPacienteDto> RecuperarPacientes([FromQuery] int skip = 0, [FromQuery] int take = 5)
+    public async Task<IEnumerable<ReadPacienteDto>> RecuperarPacientes([FromQuery] int skip = 0, [FromQuery] int take = 5)
     {
-        var pacientes = _context.Pacientes.Skip(skip).Take(take).ToList();
+        var pacientes = await _context.Pacientes.Skip(skip).Take(take).ToListAsync();
         var pacientesDto = _mapper.Map<List<ReadPacienteDto>>(pacientes);
         return pacientesDto;
     }
@@ -60,7 +60,7 @@ public class PacienteController : Controller
     [ProducesResponseType(201, Type = typeof(ReadPacienteDto))]
     [ProducesResponseType(400)]
     [ProducesResponseType(500)]
-    public IActionResult AdicionarPaciente([FromBody] CreatePacienteDto pacienteDto)
+    public async Task<IActionResult> AdicionarPaciente([FromBody] CreatePacienteDto pacienteDto)
     {
         if (pacienteDto == null)
         {
@@ -70,9 +70,8 @@ public class PacienteController : Controller
         try
         {
             Paciente paciente = _mapper.Map<Paciente>(pacienteDto);
-            //paciente.SenhaClassificacao = GerarSenha.Sequencia();
-            _context.Pacientes.Add(paciente);
-            _context.SaveChanges();
+            await _context.Pacientes.AddAsync(paciente);
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(RecuperaPacientePorId), new { id = paciente.PacienteId }, paciente);
 
         }
@@ -97,7 +96,7 @@ public class PacienteController : Controller
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
     [ProducesResponseType(500)]
-    public IActionResult AtualizarPaciente(int id, [FromBody] UpdatePacienteDto pacienteDto)
+    public async Task<IActionResult> AtualizarPaciente(int id, [FromBody] UpdatePacienteDto pacienteDto)
     {
         if (pacienteDto == null)
         {
@@ -106,10 +105,10 @@ public class PacienteController : Controller
 
         try
         {
-            var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.PacienteId == id);
+            var paciente = await _context.Pacientes.FirstOrDefaultAsync(paciente => paciente.PacienteId == id);
             if (paciente == null) return NotFound();
             _mapper.Map(pacienteDto, paciente);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Ok();
         }
         catch (DbUpdateException ex)
@@ -131,19 +130,19 @@ public class PacienteController : Controller
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     [ProducesResponseType(500)]
-    public IActionResult DeletaPaciente(int id)
+    public async Task<IActionResult> DeletaPaciente(int id)
     {
-        var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.PacienteId == id);
+        var paciente = await _context.Pacientes.FirstOrDefaultAsync(paciente => paciente.PacienteId == id);
         if (paciente == null) return NotFound($"Paciente com ID {id} não encontrado.");
         try
         {
             _context.Pacientes.Remove(paciente);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Ok();
         }
         catch (DbUpdateException ex)
         {
-            return BadRequest($"Não foi possível excluir este paciente do sistema: {ex.Message}");
+            return BadRequest($"Não foi possível excluir este paciente do sistema, paciente vinculado a um responsável: {ex.Message}, {ex.InnerException}");
         }
         catch (Exception ex)
         {

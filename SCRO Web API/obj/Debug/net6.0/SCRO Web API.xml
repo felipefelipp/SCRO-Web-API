@@ -113,5 +113,17 @@
         <member name="M:SCRO_Web_API.Migrations.Removersenhadaclassepaciente.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:SCRO_Web_API.Migrations.Removeratributovirtualresponsavel">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Removeratributovirtualresponsavel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Removeratributovirtualresponsavel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Removeratributovirtualresponsavel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
