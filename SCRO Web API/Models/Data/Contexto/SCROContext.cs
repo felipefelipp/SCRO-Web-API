@@ -5,6 +5,7 @@ using Models.Classificacao;
 using Models.Data.Configuracao;
 using SCRO_Web_API.Models.Classificacao;
 using SCRO_Web_API.Models.Data.Configuracao;
+using SCRO_Web_API.Models.Atendimento;
 
 namespace Models.Data.Contexto;
 
@@ -25,6 +26,7 @@ public class SCROContext : DbContext
     public DbSet<RespostaSelecionadaPaciente> RespostaSelecionadaPaciente { get; set; }
     public DbSet<ClassificacaoPaciente> Classificacoes { get; set; }
     public DbSet<Resultado> Resultados { get; set; }
+    public DbSet<AtendimentoPaciente> Atendimentos { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new PacienteConfiguration());
@@ -37,6 +39,7 @@ public class SCROContext : DbContext
         modelBuilder.ApplyConfiguration(new ClassificacaoPacienteConfiguration());
         modelBuilder.ApplyConfiguration(new RespostaSelecionadaPacienteConfiguration());
         modelBuilder.ApplyConfiguration(new ResultadoConfiguration());
+        modelBuilder.ApplyConfiguration(new AtendimentoPacienteConfiguration());
     }
 
 }

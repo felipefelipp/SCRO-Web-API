@@ -125,5 +125,17 @@
         <member name="M:SCRO_Web_API.Migrations.Removeratributovirtualresponsavel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:SCRO_Web_API.Migrations.AddAtendimento">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddAtendimento.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddAtendimento.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddAtendimento.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

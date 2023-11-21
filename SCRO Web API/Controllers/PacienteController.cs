@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Models.Cliente;
 using Models.Data.Contexto;
 using SCRO_Web_API.Models.Data.Dto.PacienteDto;
-using SCRO_Web_API.Models.Extensions;
+
 
 namespace SCRO_Web_API.Controllers;
 [ApiController]
-[Route("[controller]")]
+[Route("[controller]")] 
 public class PacienteController : Controller
 {
     SCROContext _context;
