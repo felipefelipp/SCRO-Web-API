@@ -9,7 +9,7 @@ public class Paciente : Pessoa
     public string Bairro { get;  set; }
     public string Municipio { get;  set; }
     public string UF { get;  set; }
-    public int CEP { get;  set; }
+    public string CEP { get;  set; }
     public char Sexo { get;  set; }
     public string Profissao { get;  set; }  
 }

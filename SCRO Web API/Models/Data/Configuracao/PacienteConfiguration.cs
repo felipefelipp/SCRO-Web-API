@@ -57,7 +57,8 @@ public class PacienteConfiguration : PessoaConfiguration<Paciente>
 
         builder
             .Property(p => p.CEP)
-            .HasColumnName("cep");
+            .HasColumnName("cep")
+            .HasColumnType("varchar(8)");
 
         builder
             .Property(p => p.Sexo)

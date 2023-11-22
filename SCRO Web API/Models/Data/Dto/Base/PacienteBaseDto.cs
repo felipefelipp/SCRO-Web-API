@@ -51,7 +51,7 @@ public abstract class PacienteBaseDto
 
     [Required(ErrorMessage = "O CEP é obrigatório.")]
     [RegularExpression("^[0-9]{8}$", ErrorMessage = "Verifique o CEP, ele deve possuir 8 dígitos e não ter pontuação")]
-    public int CEP { get; set; }
+    public string CEP { get; set; }
 
     [Required(ErrorMessage = "O sexo é obrigatório.")]
     [RegularExpression("^[FM]$", ErrorMessage = "Selecione M ou F")]

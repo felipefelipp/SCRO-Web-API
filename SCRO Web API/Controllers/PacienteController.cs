@@ -54,22 +54,19 @@ public class PacienteController : Controller
     /// <summary>
     /// Adiciona um novo paciente.
     /// </summary>
-    /// <param name="pacienteDto">Dados do paciente a serem adicionados.</param>
+    /// <param name="pacienteDto">Dados do paciente a ser adicionado.</param>
     /// <returns>O paciente recém-adicionado.</returns>
-    [HttpPost("/Paciente/AdicionaPaciente")]
+    [HttpPost("/Paciente/AdicionarPaciente")]
     [ProducesResponseType(201, Type = typeof(ReadPacienteDto))]
     [ProducesResponseType(400)]
     [ProducesResponseType(500)]
     public async Task<IActionResult> AdicionarPaciente([FromBody] CreatePacienteDto pacienteDto)
     {
-        if (pacienteDto == null)
-        {
-            return BadRequest("O objeto pacienteDto não pode ser nulo.");
-        } 
+        if (pacienteDto == null) return BadRequest("O objeto pacienteDto não pode ser nulo.");
 
         try
         {
-            Paciente paciente = _mapper.Map<Paciente>(pacienteDto);
+            var paciente = _mapper.Map<Paciente>(pacienteDto);
             await _context.Pacientes.AddAsync(paciente);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(RecuperaPacientePorId), new { id = paciente.PacienteId }, paciente);
@@ -98,10 +95,7 @@ public class PacienteController : Controller
     [ProducesResponseType(500)]
     public async Task<IActionResult> AtualizarPaciente(int id, [FromBody] UpdatePacienteDto pacienteDto)
     {
-        if (pacienteDto == null)
-        {
-            return BadRequest("O objeto pacienteDto não pode ser nulo.");
-        }
+        if (pacienteDto == null) return BadRequest("O objeto pacienteDto não pode ser nulo.");
 
         try
         {
@@ -113,7 +107,7 @@ public class PacienteController : Controller
         }
         catch (DbUpdateException ex)
         {
-            return BadRequest("Não foi possível inserir este paciente no sistema: \n" + ex.Message + ": \n" + ex.InnerException.Message);
+            return BadRequest("Não foi possível atualizar este paciente no sistema: \n" + ex.Message + ": \n" + ex.InnerException.Message);
         }
         catch (Exception ex)
         {
@@ -124,13 +118,13 @@ public class PacienteController : Controller
     /// <summary>
     /// Deleta um paciente existente.
     /// </summary>
-    /// <param name="id">ID do paciente a ser deletado.</param>
+    /// <param name="id">ID do paciente a ser excluido.</param>
     /// <returns>Código de status OK se a exclusão for bem-sucedida.</returns>
-    [HttpDelete("/Paciente/{id}")]
+    [HttpDelete("/Paciente/ExcluirPaciente/{id}")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     [ProducesResponseType(500)]
-    public async Task<IActionResult> DeletaPaciente(int id)
+    public async Task<IActionResult> ExcluirPaciente(int id)
     {
         var paciente = await _context.Pacientes.FirstOrDefaultAsync(paciente => paciente.PacienteId == id);
         if (paciente == null) return NotFound($"Paciente com ID {id} não encontrado.");

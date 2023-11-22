@@ -48,7 +48,7 @@ namespace SCRO_Web_API.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("DROP SEQUENCE ResultadoSequence");
+            migrationBuilder.Sql("DROP SEQUENCE AtendimentoSequence");
 
             migrationBuilder.DropTable(
                 name: "Atendimento");

@@ -23,7 +23,7 @@
             <summary>
             Adiciona um novo paciente.
             </summary>
-            <param name="pacienteDto">Dados do paciente a serem adicionados.</param>
+            <param name="pacienteDto">Dados do paciente a ser adicionado.</param>
             <returns>O paciente recém-adicionado.</returns>
         </member>
         <member name="M:SCRO_Web_API.Controllers.PacienteController.AtualizarPaciente(System.Int32,SCRO_Web_API.Models.Data.Dto.PacienteDto.UpdatePacienteDto)">
@@ -34,11 +34,48 @@
             <param name="pacienteDto">Dados do paciente para atualização.</param>
             <returns>Código de status OK se a atualização for bem-sucedida.</returns>
         </member>
-        <member name="M:SCRO_Web_API.Controllers.PacienteController.DeletaPaciente(System.Int32)">
+        <member name="M:SCRO_Web_API.Controllers.PacienteController.ExcluirPaciente(System.Int32)">
             <summary>
             Deleta um paciente existente.
             </summary>
-            <param name="id">ID do paciente a ser deletado.</param>
+            <param name="id">ID do paciente a ser excluido.</param>
+            <returns>Código de status OK se a exclusão for bem-sucedida.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.RecuperaResponsavelPorId(System.Int32)">
+            <summary>
+            Obtém um responsavel pelo ID.
+            </summary>
+            <param name="id">ID do responsavel.</param>
+            <returns>O responsavel correspondente ao ID.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.RecuperaResponsaveis(System.Int32,System.Int32)">
+            <summary>
+            Obtém uma lista de responsaveis.
+            </summary>
+            <param name="skip">Número de registros a serem ignorados.</param>
+            <param name="take">Número máximo de registros a serem retornados.</param>
+            <returns>Uma lista de responsaveis.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.AdicionarResponsavel(SCRO_Web_API.Models.Data.Dto.ResponsavelDto.CreateResponsavelDto)">
+            <summary>
+            Adiciona um novo responsavel.
+            </summary>
+            <param name="responsavelDto">Dados do responsavel a ser adicionado.</param>
+            <returns>O responsavel recém-adicionado.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.AtualizarResponsavel(System.Int32,SCRO_Web_API.Models.Data.Dto.ResponsavelDto.UpdateResponsavelDto)">
+            <summary>
+            Atualiza os dados de um responsável existente.
+            </summary>
+            <param name="id">ID do responsavel a ser atualizado.</param>
+            <param name="responsavelDto">Dados do responsavel para atualização.</param>
+            <returns>Código de status OK se a atualização for bem-sucedida.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.ExcluirResponsavel(System.Int32)">
+            <summary>
+            Deleta um responsavel existente.
+            </summary>
+            <param name="id">ID do responsavel a ser excluido.</param>
             <returns>Código de status OK se a exclusão for bem-sucedida.</returns>
         </member>
         <member name="T:SCRO_Web_API.Migrations.Inicial">
@@ -135,6 +172,18 @@
             <inheritdoc />
         </member>
         <member name="M:SCRO_Web_API.Migrations.AddAtendimento.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.Ajustetipocepstring">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Ajustetipocepstring.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Ajustetipocepstring.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Ajustetipocepstring.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

@@ -9,21 +9,4 @@ public abstract class Pessoa
     public string Celular { get; set; }
     public string Email { get; set; }
 
-    //public Pessoa(string nome,
-    //              DateTime dtNascimento,
-    //              string cpf,
-    //              string rg,
-    //              string celular,
-    //              string email)
-    //{
-    //    Nome = nome;
-    //    DataNascimento = dtNascimento;
-    //    CPF = cpf;
-    //    RG = rg;
-    //    Celular = celular;
-    //    Email = email;
-    //}
-
-
-    //public Pessoa() { }
 }
