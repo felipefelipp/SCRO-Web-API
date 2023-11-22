@@ -186,5 +186,17 @@
         <member name="M:SCRO_Web_API.Migrations.Ajustetipocepstring.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:SCRO_Web_API.Migrations.Addconfiguraçãomuitosxmuitospacienteeresponsavel">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Addconfiguraçãomuitosxmuitospacienteeresponsavel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Addconfiguraçãomuitosxmuitospacienteeresponsavel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.Addconfiguraçãomuitosxmuitospacienteeresponsavel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

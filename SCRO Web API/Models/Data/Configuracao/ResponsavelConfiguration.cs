@@ -19,7 +19,11 @@ public class ResponsavelConfiguration : PessoaConfiguration<Responsavel>
             .HasDefaultValueSql("NEXT VALUE FOR ResponsavelSequence");
 
         builder
-            .HasKey(r => r.ResponsavelId);  
+            .HasKey(r => r.ResponsavelId);
 
+        builder
+            .HasMany(p => p.Paciente)
+            .WithMany(r => r.Responsavel);
+            
     }
 }

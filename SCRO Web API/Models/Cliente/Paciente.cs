@@ -11,6 +11,7 @@ public class Paciente : Pessoa
     public string UF { get;  set; }
     public string CEP { get;  set; }
     public char Sexo { get;  set; }
-    public string Profissao { get;  set; }  
+    public string Profissao { get;  set; } 
+    public virtual IList<Responsavel> Responsavel { get; set; }
 }
 

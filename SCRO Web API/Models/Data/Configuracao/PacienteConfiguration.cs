@@ -21,7 +21,6 @@ public class PacienteConfiguration : PessoaConfiguration<Paciente>
         builder
             .HasKey(p => p.PacienteId);
 
-
         builder
             .Property(p => p.Telefone)
             .HasColumnName("telefone")

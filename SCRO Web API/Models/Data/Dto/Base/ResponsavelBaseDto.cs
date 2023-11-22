@@ -28,5 +28,4 @@ public abstract class ResponsavelBaseDto
     [MaxLength(50, ErrorMessage = "O e-mail não pode ter mais de 250 caracteres")]
     [MinLength(10, ErrorMessage = "O e-mail precisa ter mais de 10 caracteres")]
     public string Email { get; set; }
-    public int? PacienteId { get; set; }
 }
