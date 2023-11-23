@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Models.Data.Contexto;
 
@@ -11,9 +12,11 @@ using Models.Data.Contexto;
 namespace SCRO_Web_API.Migrations
 {
     [DbContext(typeof(SCROContext))]
-    partial class SCROContextModelSnapshot : ModelSnapshot
+    [Migration("20231122094711_unique PacienteId ResppnsavelId")]
+    partial class uniquePacienteIdResppnsavelId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -575,6 +578,21 @@ namespace SCRO_Web_API.Migrations
                     b.ToTable("Usuario", (string)null);
                 });
 
+            modelBuilder.Entity("PacienteResponsavel", b =>
+                {
+                    b.Property<int>("PacienteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResponsavelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PacienteId", "ResponsavelId");
+
+                    b.HasIndex("ResponsavelId");
+
+                    b.ToTable("PacienteResponsavel");
+                });
+
             modelBuilder.Entity("SCRO_Web_API.Models.Atendimento.AtendimentoPaciente", b =>
                 {
                     b.Property<int>("AtendimentoPacienteId")
@@ -667,25 +685,6 @@ namespace SCRO_Web_API.Migrations
                     b.ToTable("Resultado", (string)null);
                 });
 
-            modelBuilder.Entity("SCRO_Web_API.Models.Cliente.PacienteResponsavel", b =>
-                {
-                    b.Property<int>("PacienteResponsavelId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PacienteResponsavelId"));
-
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ResponsavelId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PacienteResponsavelId");
-
-                    b.ToTable("PacienteResponsavel", (string)null);
-                });
-
             modelBuilder.Entity("Models.Classificacao.Pergunta", b =>
                 {
                     b.HasOne("Models.Classificacao.CategoriaPergunta", "CategoriaPergunta")
@@ -693,6 +692,21 @@ namespace SCRO_Web_API.Migrations
                         .HasForeignKey("CategoriaPerguntaId");
 
                     b.Navigation("CategoriaPergunta");
+                });
+
+            modelBuilder.Entity("PacienteResponsavel", b =>
+                {
+                    b.HasOne("Models.Cliente.Paciente", null)
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Models.Cliente.Responsavel", null)
+                        .WithMany()
+                        .HasForeignKey("ResponsavelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SCRO_Web_API.Models.Atendimento.AtendimentoPaciente", b =>

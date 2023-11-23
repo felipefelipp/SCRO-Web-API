@@ -60,7 +60,7 @@
             <summary>
             Adiciona um novo responsavel.
             </summary>
-            <param name="responsavelDto">Dados do responsavel a ser adicionado.</param>
+            <param name="responsavelDto">Dados do responsavel a serem adicionados.</param>
             <returns>O responsavel recém-adicionado.</returns>
         </member>
         <member name="M:SCRO_Web_API.Controllers.ResponsavelController.AtualizarResponsavel(System.Int32,SCRO_Web_API.Models.Data.Dto.ResponsavelDto.UpdateResponsavelDto)">
@@ -76,6 +76,43 @@
             Deleta um responsavel existente.
             </summary>
             <param name="id">ID do responsavel a ser excluido.</param>
+            <returns>Código de status OK se a exclusão for bem-sucedida.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.RecuperaVinculoPacientesResponsaveis(System.Int32,System.Int32)">
+            <summary>
+            Obtém uma lista de pacientes e responsaveis.
+            </summary>
+            <param name="skip">Número de registros a serem ignorados.</param>
+            <param name="take">Número máximo de registros a serem retornados.</param>
+            <returns>Uma lista de pacientes e responsaveis.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.RecuperaVinculoPacienteResponsavelPorId(System.Int32,System.Int32)">
+            <summary>
+            Obtém a lista de vinculos entre paciente e responsavel pelo ID.
+            </summary>
+            <param name="idPaciente">ID do paciente.</param>
+            <param name="idResponsavel">ID do responsavel.</param>
+            <returns>A configuração correspondente ao ID.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.VincularResponsavelPaciente(SCRO_Web_API.Models.Data.Dto.PacienteResponsavelDto.CreatePacienteResponsavelDto)">
+            <summary>
+            Adiciona um registro de paciente e responsavel.
+            </summary>
+            <param name="pacienteResponsavelDto">Dados do paciente e responsavel a serem adicionados.</param>
+            <returns>O responsavel recém-adicionado.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.AtualizarPacienteResponsavel(System.Int32,SCRO_Web_API.Models.Data.Dto.PacienteResponsavelDto.UpdatePacienteResponsavelDto)">
+            <summary>
+            Atualiza os dados de um vinculo paciente e responsável existente.
+            </summary>
+            <param name="id">ID do vinculo paciente responsavel a ser atualizado.</param>
+            <returns>Código de status OK se a atualização for bem-sucedida.</returns>
+        </member>
+        <member name="M:SCRO_Web_API.Controllers.ResponsavelController.ExcluirVinculoPacienteResponsavel(System.Int32)">
+            <summary>
+            Deleta um vinculo entre paciente e responsavel existente.
+            </summary>
+            <param name="id">ID do paciente a ser excluido.</param>
             <returns>Código de status OK se a exclusão for bem-sucedida.</returns>
         </member>
         <member name="T:SCRO_Web_API.Migrations.Inicial">
@@ -196,6 +233,42 @@
             <inheritdoc />
         </member>
         <member name="M:SCRO_Web_API.Migrations.Addconfiguraçãomuitosxmuitospacienteeresponsavel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.uniquePacienteIdResppnsavelId">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.uniquePacienteIdResppnsavelId.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.uniquePacienteIdResppnsavelId.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.uniquePacienteIdResppnsavelId.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.configuraçãodepacienteeresponsavel">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.configuraçãodepacienteeresponsavel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.configuraçãodepacienteeresponsavel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.configuraçãodepacienteeresponsavel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SCRO_Web_API.Migrations.AddchaveprimariatabelaPacienteResponsavel">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddchaveprimariatabelaPacienteResponsavel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddchaveprimariatabelaPacienteResponsavel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SCRO_Web_API.Migrations.AddchaveprimariatabelaPacienteResponsavel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

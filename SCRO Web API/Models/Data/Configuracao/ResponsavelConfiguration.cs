@@ -20,10 +20,6 @@ public class ResponsavelConfiguration : PessoaConfiguration<Responsavel>
 
         builder
             .HasKey(r => r.ResponsavelId);
-
-        builder
-            .HasMany(p => p.Paciente)
-            .WithMany(r => r.Responsavel);
             
     }
 }

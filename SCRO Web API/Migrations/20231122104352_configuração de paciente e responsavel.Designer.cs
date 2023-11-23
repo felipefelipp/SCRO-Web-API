@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Models.Data.Contexto;
 
@@ -11,9 +12,11 @@ using Models.Data.Contexto;
 namespace SCRO_Web_API.Migrations
 {
     [DbContext(typeof(SCROContext))]
-    partial class SCROContextModelSnapshot : ModelSnapshot
+    [Migration("20231122104352_configuração de paciente e responsavel")]
+    partial class configuraçãodepacienteeresponsavel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -669,19 +672,11 @@ namespace SCRO_Web_API.Migrations
 
             modelBuilder.Entity("SCRO_Web_API.Models.Cliente.PacienteResponsavel", b =>
                 {
-                    b.Property<int>("PacienteResponsavelId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PacienteResponsavelId"));
-
                     b.Property<int>("PacienteId")
                         .HasColumnType("int");
 
                     b.Property<int>("ResponsavelId")
                         .HasColumnType("int");
-
-                    b.HasKey("PacienteResponsavelId");
 
                     b.ToTable("PacienteResponsavel", (string)null);
                 });
